@@ -3,6 +3,7 @@ import { SpikesIcon } from "../public/spikes_icon";
 import BottomLink from "./components/BottomLink";
 import Card from "./components/Card";
 import { bottomLineCard, topLineCard } from "./constants/index";
+import Marquee from "react-fast-marquee";
 
 export default function Home() {
   return (
@@ -24,28 +25,44 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col gap-5 justify-center items-center h-full">
-        <div className="flex gap-5 justify-center ">
-          {topLineCard.map((card, index) => (
-            <Card
-              key={index}
-              profilePic={card.profilePic}
-              name={card.name}
-              username={card.username}
-              text={card.text}
-            />
-          ))}
-        </div>
-        <div className="flex gap-5 justify-center">
-          {bottomLineCard.map((card, index) => (
-            <Card
-              key={index}
-              profilePic={card.profilePic}
-              name={card.name}
-              username={card.username}
-              text={card.text}
-            />
-          ))}
-        </div>
+        <Marquee
+          className="gap-5"
+          direction="left"
+          loop={0}
+          autoFill={true}
+          pauseOnHover={true}
+        >
+          <div className="flex gap-5 justify-center ">
+            {topLineCard.map((card, index) => (
+              <Card
+                key={index}
+                profilePic={card.profilePic}
+                name={card.name}
+                username={card.username}
+                text={card.text}
+              />
+            ))}
+          </div>
+        </Marquee>
+        <Marquee
+          className="gap-5"
+          direction="right"
+          loop={0}
+          autoFill={true}
+          pauseOnHover={true}
+        >
+          <div className="flex gap-5 justify-center">
+            {bottomLineCard.map((card, index) => (
+              <Card
+                key={index}
+                profilePic={card.profilePic}
+                name={card.name}
+                username={card.username}
+                text={card.text}
+              />
+            ))}
+          </div>
+        </Marquee>
       </div>
 
       {/* Centré au-dessus de GridPattern */}
